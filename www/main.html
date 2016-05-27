@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Hydrogen Studios Web App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <style>
+            /*this block should go in the styles.css file*/
+        .ui-panel-inner {
+            padding:0px; /*make the buttons flush edge to edge*/
+        }
+        .ui-controlgroup {
+            margin:0; /*make the buttons flush to the top*/
+        }
+        #header {
+            height:54px;
+        }
+        #bars-button {
+            margin:7px;
+        }
+        .textLeft{
+          text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+<div data-role="page" id="home" data-theme="b">
+
+    <div data-role="panel" id="navpanel" data-theme="a"
+         data-display="overlay" data-position="left">
+        <div data-role="controlgroup" data-corners="false">
+            <a href="#" data-role="button" class="textLeft">Menu</a>
+            <a href="#" data-role="button" class="textLeft">Change Location</a>
+            <a href="#" data-role="button" class="textLeft">Your Account</a>
+            <a href="#" data-role="button" class="textLeft">Logout</a>
+        </div>
+    </div>
+
+    <div data-role="panel" id="cartpanel" data-theme="a"
+        data-display="overlay" data-position="right">
+        <div data-role="controlgroup" data-corners="false">
+            <a href="#" data-role="button">Cart Item</a>
+            <a href="#" data-role="button">Cart Item</a>
+            <a href="#" data-role="button">Cart Item</a>
+            <a href="#" data-role="button">Cart Item</a>
+        </div>
+    </div>
+
+    <div id="header" data-role="header" data-theme="b">
+        <a id="bars-button" data-icon="bars"  class="ui-btn-left" style="margin-top:10px;" href="#navpanel">Menu</a>
+        <a id="bars-button" class="ui-btn-right" style="margin-top:10px;" href="#cartpanel"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>&nbsp;&nbsp;Cart</a>
+    </div>
+</div>
+</body>
+</html>

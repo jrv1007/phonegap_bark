@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Testing Bark Idea</title>
+</head>
+<body>
+<select id="bark_method_input" onchange="clearResponse()">
+   <option value="0">Add User</option>
+   <option value="1">Edit User</option>
+   <option value="2">Remove User</option>
+   <option value="3">Add Item</option>
+   <option value="4">Edit Item</option>
+   <option value="5">Remove Item</option>
+   <option value="6">Add Order</option>
+   <option value="7">Edit Order</option>
+   <option value="8">Remove Order</option>
+   <option value="9">Change Settings</option>
+   <option value="10">Get User</option>
+   <option value="11">Get Item</option>
+   <option value="12">Get Order</option>
+   <option value="13">Get Items Ingredients</option>
+   <option value="14">Connect Item to Ingredient</option>
+   <option value="15">Set Order as Complete</option>
+   <option value="16">Adjust Price of Item</option>
+   <option value="17">Update Menu Version</option>
+   <option value="18">Test Array Passing</option>
+</select>
+<br>
+<form method="post" action="bark.php">
+   Username : <input type="text" name="user_username_input" id="user_username_input"></input><br />
+   Password : <input type="password" name="user_password_input" id="user_password_input"></input><br />
+   Email : <input type="text" name="user_email_input" id="user_email_input"></input><br />
+   Address 1 : <input type="text" name="user_address1_input" id="user_address1_input"></input><br />
+   Address 2 : <input type="text" name="user_address2_input" id="user_address2_input"></input><br />
+   City : <input type="text" name="user_city_input" id="user_city_input"></input><br />
+   State : <select name="user_state_input" id="user_state_input">
+   	<option value="">Choose a state</option>
+   	<option value="AL">Alabama</option>
+   	<option value="AK">Alaska</option>
+   	<option value="AZ">Arizona</option>
+   	<option value="AR">Arkansas</option>
+   	<option value="CA">California</option>
+   	<option value="CO">Colorado</option>
+   	<option value="CT">Connecticut</option>
+   	<option value="DE">Delaware</option>
+   	<option value="DC">District Of Columbia</option>
+   	<option value="FL">Florida</option>
+   	<option value="GA">Georgia</option>
+   	<option value="HI">Hawaii</option>
+   	<option value="ID">Idaho</option>
+   	<option value="IL">Illinois</option>
+   	<option value="IN">Indiana</option>
+   	<option value="IA">Iowa</option>
+   	<option value="KS">Kansas</option>
+   	<option value="KY">Kentucky</option>
+   	<option value="LA">Louisiana</option>
+   	<option value="ME">Maine</option>
+   	<option value="MD">Maryland</option>
+   	<option value="MA">Massachusetts</option>
+   	<option value="MI">Michigan</option>
+   	<option value="MN">Minnesota</option>
+   	<option value="MS">Mississippi</option>
+   	<option value="MO">Missouri</option>
+   	<option value="MT">Montana</option>
+   	<option value="NE">Nebraska</option>
+   	<option value="NV">Nevada</option>
+   	<option value="NH">New Hampshire</option>
+   	<option value="NJ">New Jersey</option>
+   	<option value="NM">New Mexico</option>
+   	<option value="NY">New York</option>
+   	<option value="NC">North Carolina</option>
+   	<option value="ND">North Dakota</option>
+   	<option value="OH">Ohio</option>
+   	<option value="OK">Oklahoma</option>
+   	<option value="OR">Oregon</option>
+   	<option value="PA">Pennsylvania</option>
+   	<option value="RI">Rhode Island</option>
+   	<option value="SC">South Carolina</option>
+   	<option value="SD">South Dakota</option>
+   	<option value="TN">Tennessee</option>
+   	<option value="TX">Texas</option>
+   	<option value="UT">Utah</option>
+   	<option value="VT">Vermont</option>
+   	<option value="VA">Virginia</option>
+   	<option value="WA">Washington</option>
+   	<option value="WV">West Virginia</option>
+   	<option value="WI">Wisconsin</option>
+   	<option value="WY">Wyoming</option>
+   </select><br />
+   Zip : <input type="text" name="user_zip_input" id="user_zip_input" maxlength="5"></input><br />
+   Phone : <input type="text" name="user_phone_input" id="user_phone_input"></input><br />
+   <br><br>
+
+   Item Name: <input type="text" name="item_name_input" id="item_name_input"></input><br />
+   Item Description: <input type="text" name="item_description_input" id="item_description_input"></input><br />
+   Item Price: <input type="text" name="item_price_input" id="item_price_input"></input><br />
+   Is Ingredient?: <select name="item_isIngredient_input" id="item_isIngredient_input">
+         <option value="">No</option>
+         <option value="Yes">Yes</option></select><br />
+   Category ID: <input type="text" name="category_id_input" id="category_id_input"></input><br />
+   <br><br>
+   For Connecting Items to Ingredients: <br>
+   Item ID: <input type="text" name="item_id_input" id="item_id_input"></input><br />
+   Ingredient Item ID: <input type="text" name="ingredient_item_id_input" id="ingredient_item_id_input"></input><br />
+   <br><br>
+   For Adding Orders:<br>
+   User Id: <input type="text" name="user_id_input" id="user_id_input"></input> <br />
+   Is Order Complete?: <select name="order_isComplete_input" id="order_isComplete_input">
+      <option value="0">No</option>
+      <option value="1">Yes</option>
+   </select><br />
+   Payment Type: <select name="order_paymentType_input" id="order_paymentType_input">
+      <option value="cash">Cash</option>
+      <option value="mastercard">MasterCard</option>
+      <option value="americanexpress">American Express</option>
+   </select><br />
+   <!--TODO: Finish adding these fields for order adding -->
+
+
+   <input type="button" value="Submit" onclick="btnClick()" />
+<br>
+<textarea placeholder="Response text from bark.php file" id='responseTextbox' rows="4" cols="80"></textarea>
+<br>
+<script   src="https://code.jquery.com/jquery-2.2.3.js"   integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4="   crossorigin="anonymous"></script>
+   <script>
+   //TODO: Replace this function.
+   function btnClick(){
+      var bm = document.getElementById('bark_method_input').value;
+      barkSwitchboard(bm);
+   }
+
+   var BARK_ADDUSER = 0;
+   var BARK_EDITUSER = 1;
+   var BARK_REMOVEUSER = 2;
+
+   var BARK_ADDITEM = 3;
+   var BARK_EDITITEM = 4;
+   var BARK_REMOVEITEM = 5;
+
+   var BARK_ADDORDER = 6;
+   var BARK_EDITORDER = 7;
+   var BARK_REMOVEORDER = 8;
+
+   var BARK_CHANGESETTINGS = 9;
+
+   var BARK_GETUSER = 10;
+   var BARK_GETITEM = 11;
+   var BARK_GETORDER = 12;
+
+   var BARK_GETITEMSINGREDIENTS = 13;
+   var BARK_CONNECTITEMTOINGREDIENT = 14;
+   var BARK_SETORDERCOMPLETE = 15;
+   var BARK_ADJUSTPRICEOFITEM = 16;
+   var BARK_UPDATEMENUVER = 17;
+   var BARK_TESTARRAYPASSING = 18;
+   var BARK_PUSHORDERTODRIVER = 19;
+
+
+   // document.getElementById('user_username_input').addEventListener('keyup', function(e){
+   //    if(barkGetUser(e.srcElement.value) != false){
+   //       alert('match found!');
+   //    }
+   // });
+      function clearResponse(){
+         $("#responseTextbox").html("");
+      }
+
+      function objectifyFields(){
+         var obj = {};
+         var fields = ['user_username_input', 'user_password_input', 'user_email_input',
+                       'user_address1_input', 'user_address2_input', 'user_city_input', 'user_state_input',
+                       'user_zip_input', 'user_phone_input', 'item_name_input',
+                       'item_description_input', 'item_price_input', 'item_isIngredient_input',
+                       'category_id_input', 'item_id_input', 'ingredient_item_id_input'];
+         var fieldsAry = [];
+
+         for (var i = 0; i < fields.length; i++){
+            console.log("trying to get " + fields[i] + "'s value");
+            var iteration = document.getElementById(fields[i]).value;
+            console.log("   success");
+            if( (typeof iteration != "undefined") && (iteration != null) && (iteration != "") ){
+               fieldsAry[fieldsAry.length] = fields[i];
+            }
+         }
+         console.log("fields" + fields);
+         console.log("fieldsAry" + fieldsAry);
+
+         for(var i = 0; i < fieldsAry.length; i++){
+            obj[fieldsAry[i]] = document.getElementById(fieldsAry[i]).value;
+         }
+
+         console.log(obj);
+         return obj;
+      }
+
+      function barkSwitchboard(request){
+            request = parseInt(request);
+         var xhr = new XMLHttpRequest();
+         var url = 'http://www.hydrogenstudios.com/JamesValenti/workin/intentionallyTerribleDirectoryName/bark_new/bark.php';
+         var barkObject = objectifyFields();
+         console.log("request: " + request);
+
+         switch(request){
+            case BARK_ADDUSER:
+               console.log("I am in BARK_ADDUSER");
+               xhr.open('POST', url, true);
+               var data = new FormData();
+               data.append("bark_method", BARK_ADDUSER);
+               data.append("user_username_input", barkObject.user_username_input);
+               data.append("user_password_input", barkObject.user_password_input);
+               data.append("user_email_input", barkObject.user_email_input);
+               data.append("user_address1_input", barkObject.user_address1_input);
+               data.append("user_address2_input", barkObject.user_address2_input);
+               data.append("user_city_input", barkObject.user_city_input);
+               data.append("user_state_input", barkObject.user_state_input);
+               data.append("user_zip_input", barkObject.user_zip_input);
+               data.append("user_phone_input", barkObject.user_phone_input);
+
+               xhr.onload = function () {
+                  console.log(this.responseText);
+                  $("#responseTextbox").html(this.responseText);
+               };
+               xhr.send(data);
+               break;
+
+            case BARK_EDITUSER:
+               console.log("I am in BARK_EDITUSER");
+               xhr.open('POST', url, true);
+               var data = new FormData();
+
+               data.append('bark_method', BARK_EDITUSER);
+
+               for(var prop in barkObject){
+                  data.append(prop, barkObject[prop]);
+               }
+
+               xhr.onload = function () {
+                  console.log(this.responseText);
+                  $("#responseTextbox").html(this.responseText);
+               };
+               xhr.send(data);
+               break;
+
+            case BARK_REMOVEUSER:
+               console.log("I am in BARK_REMOVEUSER");
+               xhr.open('POST', url, true);
+               var data = new FormData();
+               data.append("bark_method", BARK_REMOVEUSER);
+               data.append("user_username_input", barkObject.user_username_input);
+               xhr.onload = function(){
+                  console.log(this.responseText);
+                  $("#responseTextbox").html(this.responseText);
+               };
+               xhr.send(data);
+               break;
+
+            case BARK_ADDITEM:
+               console.log("I am in BARK_ADDITEM");
+               xhr.open('POST', url, true);
+               var data = new FormData();
+               data.append("bark_method", BARK_ADDITEM);
+               data.append("item_name_input", barkObject.item_name_input);
+               data.append("item_description_input", barkObject.item_description_input);
+               data.append("item_price_input", barkObject.item_price_input);
+               data.append("item_isIngredient_input", barkObject.item_isIngredient_input);
+               data.append("category_id_input", barkObject.category_id_input);
+
+               xhr.onload = function () {
+                  console.log(this.responseText);
+                  $("#responseTextbox").html(this.responseText);
+               };
+               xhr.send(data);
+               break;
+
+            case BARK_EDITITEM:
+               console.log("I am in BARK_EDITITEM");
+               xhr.open('POST', url, true);
+               var data = new FormData();
+
+               data.append('bark_method', BARK_EDITITEM);
+
+               for(var prop in barkObject){
+                  data.append(prop, barkObject[prop]);
+               }
+
+               console.log("xhr: ");
+                  console.table(xhr);
+               console.log("data: ");
+                  console.table(data);
+               xhr.onload = function () {
+                  console.log(this.responseText);
+                  $("#responseTextbox").html(this.responseText);
+               };
+               xhr.send(data);
+               break;
+
+            case BARK_REMOVEITEM:
+               console.log("I am in BARK_REMOVEITEM");
+               xhr.open('POST', url, true);
+               var data = new FormData();
+               data.append("bark_method", BARK_REMOVEITEM);
+               data.append("item_name_input", barkObject.item_name_input);
+               xhr.onload = function(){
+                  console.log(this.responseText);
+                  $("#responseTextbox").html(this.responseText);
+               };
+               xhr.send(data);
+               break;
+
+            case BARK_ADDORDER:
+               //TODO:Add this
+               conole.log("I am in BARK_ADDORDER");
+               xhr.open("POST", url, true);
+               var data = new FormData();
+               data.append("bark_method", BARK_ADDORDER);
+               data.append("user_id_input", barkObject.user_id_input);
+               break;
+
+            case BARK_EDITORDER:
+            console.log("I am in BARK_EDITORDER");
+            xhr.open('POST', url, true);
+            var data = new FormData();
+
+            data.append('bark_method', BARK_EDITORDER);
+
+            for(var prop in barkObject){
+               data.append(prop, barkObject[prop]);
+            }
+
+            xhr.onload = function () {
+               console.log(this.responseText);
+               $("#responseTextbox").html(this.responseText);
+            };
+            xhr.send(data);
+               break;
+
+            case BARK_REMOVEORDER:
+               console.log("I am in BARK_REMOVEORDER");
+               xhr.open('POST', url, true);
+               var data = new FormData();
+               data.append("bark_method", BARK_REMOVEORDER);
+               data.append("order_id_input", barkObject.order_id_input);
+               xhr.onload = function(){
+                  console.log(this.responseText);
+                  $("#responseTextbox").html(this.responseText);
+               };
+               break;
+
+            case BARK_CHANGESETTINGS:
+               barkChangeSettings(barkObject);
+               break;
+
+            case BARK_GETUSER:
+               var xhr = new XMLHttpRequest();
+               var url = 'bark.php';
+               var userid = barkObject.user_username_input;
+               url += "?bark_method=10&user_username_input=" + userid;
+                  console.log(url);
+               xhr.open('GET', url, true);
+
+               xhr.onload = function () {
+                  console.log(this.responseText);
+                  $("#responseTextbox").html(this.responseText);
+               };
+               xhr.send();
+               break;
+
+            case BARK_GETITEM:
+               var xhr = new XMLHttpRequest();
+               var url = 'bark.php';
+               var itemid = barkObject.item_id_input;
+               url += "?bark_method=11&item_id_input=" + itemid;
+                  console.log(url);
+               xhr.open('GET', url, true);
+
+               xhr.onload = function () {
+                  console.log(this.responseText);
+                  $("#responseTextbox").html(this.responseText);
+               };
+               xhr.send();
+               break;
+
+            case BARK_GETORDER:
+               var xhr = new XMLHttpRequest();
+               var url = 'bark.php';
+               var orderid = barkObject.order_id_input;
+               url += "?bark_method=12&order_id_input=" + orderid;
+                  console.log(url);
+               xhr.open('GET', url, true);
+
+               xhr.onload = function () {
+                  console.log(this.responseText);
+                  $("#responseTextbox").html(this.responseText);
+               };
+               xhr.send();
+               break;
+
+            case BARK_TESTARRAYPASSING:
+               xhr.open("POST", url, true);
+
+               var theAry = new Array('aryItem1', 'aryItem2', 'AryItem3');
+               var theSecondAry = new Array("aryItem4", "aryItem5", "aryItem6");
+               var obj = {'firstAry': theAry, 'secondAry': theSecondAry};
+               console.log("obj is :");
+               console.table(obj);
+               console.log("stringed is: ");
+               console.log(JSON.stringify(obj));
+
+               var data = new FormData();
+               data.append("bark_method", BARK_TESTARRAYPASSING);
+               data.append("theArray", JSON.stringify(obj));
+
+               xhr.onload = function () {
+                  console.log(this.responseText);
+                  $("#responseTextbox").html(this.responseText);
+                  var parsedObj = JSON.parse(this.responseText);
+                  console.log("parsedObj: ");
+                  console.table(parsedObj);
+               };
+
+               xhr.send(data);
+               break;
+
+            default:
+               console.log("I have defaulted");
+               break;
+         }
+      }
+
+      //
+      //END OF SWITCHBOARD
+      //
+   </script>
+</body>
+</html>
